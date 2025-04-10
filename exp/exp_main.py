@@ -117,6 +117,11 @@ class Exp_Main(Exp_Basic):
         if not os.path.exists(path):
             os.makedirs(path)
 
+        best_model_path = path + '/' + 'checkpoint.pth'
+        if (os.path.exists(best_model_path)):
+            print(f'Model exist. Loading model: {best_model_path}')
+            self.model.load_state_dict(torch.load(best_model_path))
+
         time_now = time.time()
 
         train_steps = len(train_loader)
