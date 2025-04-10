@@ -109,7 +109,14 @@ if __name__ == '__main__':
     torch.manual_seed(fix_seed)
     np.random.seed(fix_seed)
 
-
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(fix_seed)
+        torch.cuda.manual_seed_all(fix_seed)
+        if not args.use_gpu:
+            os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+        if args.use_multi_gpu:
+            os.environ['CUDA_VISIBLE_DEVICES'] = args.devices
+            
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
 
     if args.use_gpu and args.use_multi_gpu:
