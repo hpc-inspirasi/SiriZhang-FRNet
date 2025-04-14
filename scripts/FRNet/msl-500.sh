@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script is used to run the FRNet model on the ETTh1 dataset for long-term forecasting.
+# This script is used to run the FRNet model on the MSL dataset for long-term forecasting.
 # It sets up the necessary directories, defines parameters, and executes the model training.
 
 # Set the file name and current time for logging
@@ -16,11 +16,12 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
+
 seq_len=512
 model_name=FRNet
 
-root_path_name=./dataset/ETT-small
-data_path_name=ETTh1.csv
+root_path_name=./dataset/MSL
+data_path_name=MSL
 model_id_name=ETTh1
 data_name=ETTh1
 
